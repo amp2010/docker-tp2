@@ -12,4 +12,4 @@ Docker projet for the design pattern class
   - cd docker-tp2/ 
   - docker-compose up
 ```
-
+  - Access from the browser your local ip or the ip of the VM
