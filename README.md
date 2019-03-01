@@ -9,4 +9,5 @@ Docker projet for the design pattern class
 ## How to
   - ```bash
     git clone https://github.com/amp2010/docker-tp2.git
+    - cd docker-tp2/
      ```
