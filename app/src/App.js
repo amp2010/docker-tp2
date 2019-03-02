@@ -31,7 +31,10 @@ class App extends Component {
   getDataFromDb = () => {
     fetch("/api/users")
       .then(data => data.json())
-      .then(res => this.setState({ data: res.data }));
+      .then(res => this.setState({ data: res.data }))
+      .catch(err => {
+          console.log("Could'nt get data from API :" + err);
+      });
   };
 
   // POST
@@ -47,7 +50,7 @@ class App extends Component {
   deleteFromDB = idTodelete => {
     let objIdToDelete = null;
     this.state.data.forEach(dat => {
-      if (dat.id == idTodelete) {
+      if (dat.id === idTodelete) {
         objIdToDelete = dat._id;
       }
     });
@@ -68,7 +71,7 @@ class App extends Component {
           <input
             type="text"
             onChange={e => this.setState({ userId: e.target.value })}
-            placeholder="User Id"
+            placeholder="Cave Id"
             style={{ width: "200px" }}
           />
 	  <input
@@ -103,7 +106,7 @@ class App extends Component {
             ? "NO DB ENTRIES YET"
             : data.map(dat => (
                 <li style={{ padding: "10px" }} key={data.firstname}>
-                  <span style={{ color: "gray" }}> User Id: </span> {dat.userId} <br />
+                  <span style={{ color: "purple" }}> User Id: </span> {dat.userId} <br />
                   <span style={{ color: "gray" }}> Firstname: </span> {dat.firstname} <br />
                   <span style={{ color: "gray" }}> Lastname: </span> {dat.lastname}
                 </li>
