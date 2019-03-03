@@ -66,52 +66,70 @@ class App extends Component {
   render() {
     const { data } = this.state;
     return (
-      <div>
-        <div style={{ padding: "10px" }}>
+      <div style={{ padding: "30px 20%" }}>
+        <div id="insert-container">
+          <h3>Insert a user in the database: </h3>
           <input
             type="text"
+            className="form-control"
             onChange={e => this.setState({ userId: e.target.value })}
-            placeholder="Cave Id"
+            placeholder="User Id"
             style={{ width: "200px" }}
           />
-	  <input
+	      <input
             type="text"
+            className="form-control"
             onChange={e => this.setState({ firstname: e.target.value })}
             placeholder="Firstname"
             style={{ width: "200px" }}
           />
-	  <input
+	      <input
             type="text"
+            className="form-control"
             onChange={e => this.setState({ lastname: e.target.value })}
             placeholder="Lastname"
             style={{ width: "200px" }}
           />
-          <button onClick={() => this.putDataToDB(this.state.userId, this.state.firstname, this.state.lastname)}>
+          <br/>
+          <button
+            onClick={() => this.putDataToDB(this.state.userId, this.state.firstname, this.state.lastname)}
+            className="btn btn-success" >
             ADD
           </button>
         </div>
-        <div style={{ padding: "10px" }}>
+        <br/>
+        <br/>
+        <div id="delete-container">
+          <h3>Delete a user from the database: </h3>
           <input
             type="text"
             style={{ width: "200px" }}
+            className="form-control"
             onChange={e => this.setState({ idToDelete: e.target.value })}
             placeholder="User id to delete"
           />
-          <button onClick={() => this.deleteFromDB(this.state.idToDelete)}>
+          <br/>
+          <button
+            onClick={() => this.deleteFromDB(this.state.idToDelete)}
+            className="btn btn-danger">
             DELETE
           </button>
         </div>
-        <ul>
+        <br/>
+        <br/>
+        <div id="db-result-container">
           {data.length <= 0
-            ? "NO DB ENTRIES YET"
-            : data.map(dat => (
-                <li style={{ padding: "10px" }} key={data.firstname}>
-                  <span style={{ color: "purple" }}> User Id: </span> {dat.userId} <br />
-                  <span style={{ color: "gray" }}> Firstname: </span> {dat.firstname} <br />
-                  <span style={{ color: "gray" }}> Lastname: </span> {dat.lastname}
-                </li>
-              ))}
-        </ul>
+          ? <h3>Your database is currently empty, add some user to it !</h3>
+          : data.map(dat => (
+            <ul>
+              <li style={{ padding: "10px" }} key={data.firstname}>
+                <span style={{ color: "gray" }}> User Id: </span> {dat.userId} <br />
+                <span style={{ color: "gray" }}> Firstname: </span> {dat.firstname} <br />
+                <span style={{ color: "gray" }}> Lastname: </span> {dat.lastname}
+              </li>
+            </ul>
+          ))}
+        </div>
       </div>
     );
   }

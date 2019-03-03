@@ -4,8 +4,10 @@
   "private": false,
   "dependencies": {
     "axios": "^0.18.0",
+    "nodemon": "^1.18.10",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-nice-inputs": "^1.0.38",
     "react-scripts": "2.1.5"
   },
   "scripts": {
